@@ -10,4 +10,6 @@ setup(
     license = "Apache2.0",
     packages=['frfformats'],
     package_dir={'': 'src'},
+    url="https://github.com/gavanderhoorn/frfformats",
+    install_requires=['enum34']
 )
