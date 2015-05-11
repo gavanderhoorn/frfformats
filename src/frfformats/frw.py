@@ -171,13 +171,23 @@ class FrwFixture(FrwChuiObject):
 class FrwUserFrame(FrwChuiObject):
     def __init__(self, id):
         super(FrwUserFrame, self).__init__(id)
-        self.location = FrwTriad()
         self.name = 'UFrame'
         self.num = -1
 
 
+class FrwEoat(FrwChuiObject):
+    def __init__(self, id):
+        super(FrwEoat, self).__init__(id)
+        self.name = 'Eoat'
+        self.num = -1
+        self.mass = 0.0
+
+    def __str__(self):
+        return "FrwEoat('%s' (%d))" % (self.name, self.num)
+
+
 class FrwRobotController(FrwObject):
-    def __init__(self, id,):
+    def __init__(self, id):
         super(FrwRobotController, self).__init__(id)
         self.robot_groups = []
 
@@ -198,6 +208,7 @@ class FrwRobotGroup(FrwObject):
         self.name = ''
         self.model_name = ''
         self.active_uframe_num = 0
+        self.location = FrwTriad()
 
 
 class FrwWorkcell(object):

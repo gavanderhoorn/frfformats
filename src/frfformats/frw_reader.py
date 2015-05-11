@@ -24,7 +24,7 @@ try:
 except:
     import xml.etree.ElementTree as et
 
-from frfformats.frw import FrwWorkcell, FrwObstacle, FrwFixture, FrwUserFrame, FrwRobotController, FrwRobotGroup, FrwShapeKind
+from frfformats.frw import FrwWorkcell, FrwObstacle, FrwFixture, FrwUserFrame, FrwEoat, FrwRobotController, FrwRobotGroup, FrwShapeKind
 
 
 def _parse_obj(elem, obj):
@@ -110,7 +110,7 @@ def load_stream(istr):
                     # TODO: this will only read the active uframe num for the first occurence of 'UserFrames'
                     rgrp.active_uframe_num = int(rgrp_e.find('UserFrames').get('ActiveUFrameNum'))
 
-                    for uframes_es in rctrlr_e.findall('UserFrames'):
+                    for uframes_es in rgrp_e.findall('UserFrames'):
                         for uframe_e in uframes_es.findall('UserFrame'):
                             uframe = FrwUserFrame(int(uframe_e.get('ID')))
 
@@ -125,6 +125,23 @@ def load_stream(istr):
                             uframe.location.r = float(uframe_e.get('FrameR', 0))
 
                             rgrp.user_frames.append(uframe)
+
+                    for eoats_es in rgrp_e.findall('EOATs'):
+                        for eoat_e in eoats_es.findall('EOAT'):
+                            eoat = FrwEoat(int(eoat_e.get('ID')))
+
+                            eoat.name = eoat_e.get('Name')
+                            eoat.num = int(eoat_e.get('UToolNum'))
+                            eoat.mass = float(eoat_e.get('MassKG', '0'))
+
+                            eoat.location.x = float(eoat_e.get('LocationTCPX', 0))
+                            eoat.location.y = float(eoat_e.get('LocationTCPY', 0))
+                            eoat.location.z = float(eoat_e.get('LocationTCPZ', 0))
+                            eoat.location.w = float(eoat_e.get('LocationTCPW', 0))
+                            eoat.location.p = float(eoat_e.get('LocationTCPP', 0))
+                            eoat.location.r = float(eoat_e.get('LocationTCPR', 0))
+
+                            rgrp.eoats.append(eoat)
 
                     rctrlr.robot_groups.append(rgrp)
 
