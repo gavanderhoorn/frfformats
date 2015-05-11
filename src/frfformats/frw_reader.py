@@ -107,6 +107,13 @@ def load_stream(istr):
                     rgrp.name = rgrp_e.get('Name')
                     rgrp.model_name = rgrp_e.get('ModelName')
 
+                    rgrp.location.x = float(rgrp_e.get('LocationX', 0))
+                    rgrp.location.y = float(rgrp_e.get('LocationY', 0))
+                    rgrp.location.z = float(rgrp_e.get('LocationZ', 0))
+                    rgrp.location.w = float(rgrp_e.get('LocationW', 0))
+                    rgrp.location.p = float(rgrp_e.get('LocationP', 0))
+                    rgrp.location.r = float(rgrp_e.get('LocationR', 0))
+
                     # TODO: this will only read the active uframe num for the first occurence of 'UserFrames'
                     rgrp.active_uframe_num = int(rgrp_e.find('UserFrames').get('ActiveUFrameNum'))
 
