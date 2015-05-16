@@ -67,18 +67,30 @@ class FrwTriad(object):
             self.x, self.y, self.z, self.w, self.p, self.r)
 
     def pos(self):
+        """
+        :returns: Tuple of just the position part of this Triad
+        """
         return (self.x, self.y, self.z)
 
     def orient(self):
+        """
+        :returns: Tuple of just the orientation part of this Triad
+        """
         return (self.w, self.p, self.r)
 
     def as_tuple(self):
         return (self.x, self.y, self.z, self.w, self.p, self.r)
 
     def as_rpy(self):
+        """
+        :returns: Tuple (3 floats) of Triad orientation in (roll, pitch, yaw) order
+        """
         return (self.r, self.p, self.w)
 
     def all_zeros(self):
+        """
+        :returns: ``True`` iff all elements of this Triad are equal to zero, ``bool``
+        """
         return all([c == 0. for c in self.as_tuple()])
 
 
@@ -95,7 +107,7 @@ class FrwColour(object):
     def __str__(self):
         return "(%.3f; %.3f; %.3f; %.3f)" % (self.r, self.g, self.b, self.a)
 
-    def set_from_vb_str(self, vb_str):
+    def set_from_hex_str(self, vb_str):
         # interpret str as hex
         clr = int(vb_str[2:], 16)
         # bgr triplet
