@@ -24,7 +24,7 @@ try:
 except:
     import xml.etree.ElementTree as et
 
-from frfformats.frw import FrwWorkcell, FrwObstacle, FrwFixture, FrwUserFrame, FrwEoat, FrwRobotController, FrwRobotGroup, FrwShapeKind
+from frfformats.frw import FrwWorkcell, FrwCellObject, FrwUserFrame, FrwEoat, FrwRobotController, FrwRobotGroup, FrwShapeKind
 
 
 _DEFAULT_SCALE=1.0
@@ -87,7 +87,7 @@ def load_stream(istr):
     # we use findall() here in case there is more than one 'Obstacles' tag
     for obs_es in root.findall('Obstacles'):
         for obs_e in obs_es.findall('Obstacle'):
-            obs = FrwObstacle(_get_id(obs_e))
+            obs = FrwCellObject(_get_id(obs_e))
             _parse_obj(obs_e, obs)
             wcell.obstacles.append(obs)
 
@@ -96,7 +96,7 @@ def load_stream(istr):
     # we use findall() here in case there is more than one 'Fixtures' tag
     for fixts_es in root.findall('Fixtures'):
         for fixt_e in fixts_es.findall('Fixture'):
-            fixt = FrwFixture(_get_id(fixt_e))
+            fixt = FrwCellObject(_get_id(fixt_e))
             _parse_obj(fixt_e, fixt)
             wcell.fixtures.append(fixt)
 

@@ -151,31 +151,15 @@ class FrwChuiObject(FrwObject):
         self.location = FrwTriad()
 
 
-class FrwObstacle(FrwChuiObject):
+class FrwCellObject(FrwChuiObject):
     """
     """
     def __init__(self, id):
-        super(FrwObstacle, self).__init__(id)
+        super(FrwCellObject, self).__init__(id)
         self.scale = FrwObjectScale()
         self.colour = FrwColour()
         self.kind = FrwShapeKind.UNKNOWN
         self.name = 'Obstacle'
-
-        # TODO: perhaps store this in a class
-        self.cad_imglib_loc_rel = ''
-        self.cad_imglib_loc_abs = ''
-        self.cad_file_cached = ''
-
-
-class FrwFixture(FrwChuiObject):
-    """
-    """
-    def __init__(self, id):
-        super(FrwFixture, self).__init__(id)
-        self.scale = FrwObjectScale()
-        self.colour = FrwColour()
-        self.kind = FrwShapeKind.UNKNOWN
-        self.name = 'Fixture'
 
         # TODO: perhaps store this in a class
         self.cad_imglib_loc_rel = ''
