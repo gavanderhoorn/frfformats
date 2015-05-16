@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name = "frfformats",
-    version = "0.0.2",
+    version = "0.0.3",
     author = "G.A. vd. Hoorn",
     author_email = "g.a.vanderhoorn@tudelft.nl",
     description = ("A Python library for reading (and sometimes writing) Fanuc Robotics file formats."),
