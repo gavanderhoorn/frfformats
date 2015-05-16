@@ -78,6 +78,9 @@ class FrwTriad(object):
     def as_rpy(self):
         return (self.r, self.p, self.w)
 
+    def all_zeros(self):
+        return all([c == 0. for c in self.as_tuple()])
+
 
 class FrwColour(object):
     """
@@ -173,6 +176,9 @@ class FrwUserFrame(FrwChuiObject):
         super(FrwUserFrame, self).__init__(id)
         self.name = 'UFrame'
         self.num = -1
+
+    def __str__(self):
+        return "FrwUFrame('%s' (%d))" % (self.name, self.num)
 
 
 class FrwEoat(FrwChuiObject):
