@@ -151,20 +151,23 @@ class FrwChuiObject(FrwObject):
         self.location = FrwTriad()
 
 
+class FrwCADFile(object):
+    def __init__(self):
+        self.filename = ''
+        self.cached_file = ''
+
+
 class FrwCellObject(FrwChuiObject):
     """
     """
     def __init__(self, id):
         super(FrwCellObject, self).__init__(id)
+        self.cad_file = FrwCADFile()
         self.scale = FrwObjectScale()
         self.colour = FrwColour()
         self.kind = FrwShapeKind.UNKNOWN
         self.name = 'Obstacle'
-
-        # TODO: perhaps store this in a class
-        self.cad_imglib_loc_rel = ''
-        self.cad_imglib_loc_abs = ''
-        self.cad_file_cached = ''
+        self.cad_file_name = ''
 
 
 class FrwUserFrame(FrwChuiObject):

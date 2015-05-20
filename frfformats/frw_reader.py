@@ -63,11 +63,10 @@ def _parse_obj(elem, obj):
             raise ValueError("Obstacle '%s' has 'CADFileName' attribute,"
                 " but is not a CAD obj kind ('%s')" % (obj.name, obj.kind))
 
-        # TODO: not so nice
-        obj.cad_imglib_loc_abs = elem.get('CADFileName')
+        obj.cad_file_name = elem.get('CADFileName')
         cad_file_e = elem.find('CADFile')
-        obj.cad_imglib_loc_rel = cad_file_e.get('CADFile')
-        obj.cad_file_cached = cad_file_e.get('CachedCADFile')
+        obj.cad_file.filename = cad_file_e.get('CADFile')
+        obj.cad_file.cached_file = cad_file_e.get('CachedCADFile')
 
 
 def load_stream(istr):
