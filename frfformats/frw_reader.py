@@ -125,7 +125,7 @@ def load_stream(istr):
                     rgrp.location.r = float(rgrp_e.get('LocationR', _DEFAULT_LOCATION))
 
                     # TODO: this will only read the active uframe num for the first occurence of 'UserFrames'
-                    rgrp.active_uframe_num = int(rgrp_e.find('UserFrames').get('ActiveUFrameNum'))
+                    rgrp.active_uframe_num = int(rgrp_e.find('UserFrames').get('ActiveUFrameNum', -1))
 
                     for uframes_es in rgrp_e.findall('UserFrames'):
                         for uframe_e in uframes_es.findall('UserFrame'):
