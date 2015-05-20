@@ -68,21 +68,32 @@ class FrwTriad(object):
 
     def pos(self):
         """
+        Note: tuple units are millimeters.
+
         :returns: Tuple of just the position part of this Triad
         """
         return (self.x, self.y, self.z)
 
     def orient(self):
         """
+        Note: order is (wpr) here. Angles are in degrees.
+
         :returns: Tuple of just the orientation part of this Triad
         """
         return (self.w, self.p, self.r)
 
     def as_tuple(self):
+        """
+        Note: order is (xyzwpr) here. Units are millimeters and degrees.
+
+        :returns: Tuple representation of this Triad.
+        """
         return (self.x, self.y, self.z, self.w, self.p, self.r)
 
     def as_rpy(self):
         """
+        Note: angles are in degrees.
+
         :returns: Tuple (3 floats) of Triad orientation in (roll, pitch, yaw) order
         """
         return (self.r, self.p, self.w)
