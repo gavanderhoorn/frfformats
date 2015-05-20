@@ -30,6 +30,7 @@ from frfformats.frw import FrwWorkcell, FrwCellObject, FrwUserFrame, FrwEoat, Fr
 _DEFAULT_SCALE=1.0
 _DEFAULT_LOCATION=0.0
 _DEFAULT_COLOUR='&H0'
+_DEFAULT_ALPHA=1.0
 
 
 def _get_id(elem):
@@ -56,6 +57,7 @@ def _parse_obj(elem, obj):
 
     # object colour (default to black)
     obj.colour.set_from_hex_str(elem.get('Color', _DEFAULT_COLOUR))
+    obj.colour.a = float(elem.get('Alpha', _DEFAULT_ALPHA))
 
     if 'CADFileName' in elem.attrib:
         # this should be a CAD obstacle
