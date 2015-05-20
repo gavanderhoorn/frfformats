@@ -42,6 +42,7 @@ def _parse_obj(elem, obj):
     # if an obstacle doesn't have a 'Kind' attribute, it is always (?) a CAD object
     # TODO: should we perform some kind of validation here?
     obj.kind = FrwShapeKind(int(elem.get('Kind', FrwShapeKind.CAD.value)))
+    obj.description = elem.get('Description', '')
 
     # pose, scaling
     obj.location.x = float(elem.get('LocationX', _DEFAULT_LOCATION))
