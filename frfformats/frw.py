@@ -166,7 +166,7 @@ class FrwCellObject(FrwChuiObject):
         self.scale = FrwObjectScale()
         self.colour = FrwColour()
         self.kind = FrwShapeKind.UNKNOWN
-        self.name = 'Obstacle'
+        self.name = 'CellObject'
         self.cad_file_name = ''
 
 
