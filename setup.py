@@ -23,7 +23,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='frfformats',
-    version='0.0.3',
+    version='0.0.4',
     packages=find_packages(),
     author='G.A. vd. Hoorn',
     author_email='g.a.vanderhoorn@tudelft.nl',
